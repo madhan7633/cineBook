@@ -4,6 +4,8 @@ Django settings for Movie Ticket Booking project.
 
 from pathlib import Path
 from datetime import timedelta
+import os
+import dj_database_url
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,14 +68,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database — PostgreSQL
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'movie_booking_db'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'Smsm73'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=f"postgresql://{os.environ.get('DB_USER', 'postgres')}:{os.environ.get('DB_PASSWORD', 'Smsm73')}@{os.environ.get('DB_HOST', 'localhost')}:{os.environ.get('DB_PORT', '5432')}/{os.environ.get('DB_NAME', 'movie_booking_db')}",
+        conn_max_age=600
+    )
 }
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -105,6 +103,11 @@ SIMPLE_JWT = {
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
+
+# CSRF
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.onrender.com",
+]
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
