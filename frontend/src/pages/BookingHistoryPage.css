@@ -1,0 +1,95 @@
+.page-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.booking-card {
+  animation: slideUp 0.4s ease backwards;
+}
+
+.booking-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.booking-movie-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.booking-theatre {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.booking-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.booking-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.booking-detail-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booking-seats-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.booking-amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--accent-secondary);
+}
+
+.booking-time-stamp {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.booking-card-footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .booking-card-body {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .booking-card-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
